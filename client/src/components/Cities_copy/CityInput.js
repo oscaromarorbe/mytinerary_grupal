@@ -1,5 +1,6 @@
 import React from "react";
 import { Component } from "react";
+import {DebounceInput} from 'react-debounce-input';
 
 export default class CityInput extends Component {
   sendToParent = object => {
@@ -11,6 +12,11 @@ export default class CityInput extends Component {
   }
 
   render() {
-    return <input type="text" onChange={e => this.handleChange(e)} />;
+    return <DebounceInput 
+    minLength={1}
+    debounceTimeout={500}
+    onChange={this.handleChange.bind(this)}
+   />;
   }
 }
+
