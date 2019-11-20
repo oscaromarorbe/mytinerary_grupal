@@ -45,7 +45,7 @@ render(){
           </Route>
       </Switch>
       <Route path="" component={Footer}></Route>
-      
+      <Redirect from="/" to="/index" />
     </div> 
   );
 }}
