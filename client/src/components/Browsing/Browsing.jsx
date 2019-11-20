@@ -12,7 +12,7 @@ const browsing = ({flecha,cambiaColor,call}) => {
         <div className="container-fluid p-4">
             <p>Find your <span className={"cool-touch"}>perfect trip</span>, <br></br>
              designed by insiders who know and <span className={"cool-touch"}>love</span> their <span className={"cool-touch"}>cities</span></p>
-            <Link to="/cities"><img id={"Arrow"} src={flecha} alt="" /></Link>
+            <Link to="/cities"><img id={"Arrow"} onMouseEnter={cambiaColor} onMouseLeave={cambiaColor} src={flecha} alt="" /></Link>
             
             <CarouselNav callback ={callback} images={quadrupleCarouselItems}></CarouselNav>
         </div>
