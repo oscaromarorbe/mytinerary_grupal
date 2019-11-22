@@ -10,15 +10,16 @@
     "mongoose": "^5.7.10",
     "postman": "^0.2.0",
     "react-router-dom": "^5.1.2",
+    "redux-devtools-extension": "^2.13.8",
     "yarn": "^1.19.1"
   },
   "scripts": {
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "client": "cd client && yarn start",
+    "client": "cd client && npm start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\""
   },
   "eslintConfig": {
     "extends": "react-app"

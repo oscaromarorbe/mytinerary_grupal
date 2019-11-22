@@ -6,8 +6,23 @@ import "./CitiesComponent.css";
 
 import FeaturedCity from "./FeaturedCity";
 import { Route, Switch } from "react-router-dom";
+/* import { connect } from "http2"; */
 
-export default class CitiesContainer extends Component {
+import { connect } from 'react-redux';
+import getCities from '../../store/actions/cityActions';
+
+import PropTypes from 'prop-types';
+
+class CitiesContainer extends Component {
+  static propTypes = {
+    getCities: PropTypes.func.isRequired,
+    cities: PropTypes.array.isRequired
+  }
+
+  static defaultProps = {
+    cities: []
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +37,7 @@ export default class CitiesContainer extends Component {
 
   componentDidMount() {
     getData("/api/cities", null, data => {
-      this.setState({ data: data });
+      this.setState({ data });
       //CALL//
     });
   }
@@ -86,3 +101,14 @@ const filterCitiesByFirstLetter = (items, letter) => {
   );
   return cities;
 };
+
+const mapStateToProps = (state) => ({
+  data: state.data
+})
+
+const dispatchToProps = (dispatch) => {
+  return getData('/api/cities', null, data => {
+    dispatch(getCities(data));
+})}
+
+export default connect(mapStateToProps, dispatchToProps)(CitiesContainer);
